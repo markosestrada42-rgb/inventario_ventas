@@ -1,6 +1,9 @@
 <?php
+ feature/productos
 require_once __DIR__ . '/../config/database.php';
 
+
+ main
 class Producto {
     public $id;
     public $nombre;
@@ -8,6 +11,7 @@ class Producto {
     public $precio;
 
     public function __construct($nombre, $stock, $precio) {
+feature/productos
         if (empty($nombre)) {
             throw new Exception("El nombre no puede estar vacío");
         }
@@ -15,6 +19,15 @@ class Producto {
             throw new Exception("El stock no puede ser negativo");
         }
         if ($precio <= 0) {
+
+        if(empty($nombre)) {
+            throw new Exception("El nombre no puede estar vacío");
+        }
+        if($stock < 0) {
+            throw new Exception("El stock no puede ser negativo");
+        }
+        if($precio <= 0) {
+ main
             throw new Exception("El precio debe ser mayor a 0");
         }
 
@@ -22,8 +35,9 @@ class Producto {
         $this->stock = $stock;
         $this->precio = $precio;
     }
+ feature/productos
 
-    // 🔹 Métodos CRUD con conexión a BD
+    //  Métodos CRUD con conexión a BD
 
     public static function getAll() {
         $conn = Database::getConnection();
@@ -53,4 +67,8 @@ class Producto {
         return $stmt->execute();
     }
 }
+
+}
+
+ main
 ?>
